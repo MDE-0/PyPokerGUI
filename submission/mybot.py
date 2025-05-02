@@ -1,6 +1,9 @@
 import random
 from pypokerengine.players import BasePokerPlayer
 
+# Comment - by Dhruv
+# Comment - by Karlyn
+
 # Notes
 # All cards follow this format: Suit + Rank : 4 of Hearts = 4H, 10 of Spades = ST [2,3,4,5,6,7,8,9,T,J,Q,K,A] [S,C,D,H]
 
