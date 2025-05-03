@@ -36,16 +36,19 @@ class MyBot(BasePokerPlayer):  # Do not forget to make parent class as "BasePoke
         # --------------------------------------------------------------------------------------------------------#
         
         # Sample code: feel free to rewrite
-        action = random.choice(valid_actions)["action"]
-        if action == "raise":
-            action_info = valid_actions[2]
-            amount = random.randint(action_info["amount"]["min"], action_info["amount"]["max"])
-            if amount == -1: action = "call"
-        if action == "call":
-            return self.do_call(valid_actions)
-        if action == "fold":
-            return self.do_fold(valid_actions)
-        return self.do_raise(valid_actions, amount)   # action returned here is sent to the poker engine
+
+        return self.do_all_in(valid_actions)
+
+        # action = random.choice(valid_actions)["action"]
+        # if action == "raise":
+        #     action_info = valid_actions[2]
+        #     amount = random.randint(action_info["amount"]["min"], action_info["amount"]["max"])
+        #     if amount == -1: action = "call"
+        # if action == "call":
+        #     return self.do_call(valid_actions)
+        # if action == "fold":
+        #     return self.do_fold(valid_actions)
+        # return self.do_raise(valid_actions, amount)   # action returned here is sent to the poker engine
     
         # -------------------------------------------------------------------------------------------------------#
         # Make sure that you call one of the actions (self.do_fold, self.do_call, self.do_raise, self.do_all_in)
