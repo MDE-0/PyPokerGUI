@@ -96,4 +96,3 @@ class MyBot(BasePokerPlayer):  # Do not forget to make parent class as "BasePoke
         return action_info['action'], amount
 
 
-
