@@ -16,10 +16,10 @@ class MyBot(BasePokerPlayer):
             rand = random.random()
 
             # 13% chance to go all-in preflop
-            if rand < 0.13:
+            if rand < 0.6:
                 return self.do_all_in(valid_actions)
             # 12% chance to fold preflop
-            elif rand < 0.25:
+            elif rand < 0.13:
                 return self.do_fold(valid_actions)
 
             # Estimate hand strength using eval7
