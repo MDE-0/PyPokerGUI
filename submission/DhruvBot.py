@@ -29,7 +29,9 @@ class MyBot(BasePokerPlayer):
             if strength > 0.8:
                 return self.do_all_in(valid_actions)
             elif strength > 0.6:
-                return self.do_raise(valid_actions, 100)
+                action_info = valid_actions[2]
+                amount = action_info['amount']['min']
+                return self.do_raise(valid_actions, amount)
             elif strength > 0.4:
                 return self.do_call(valid_actions)
             else:
