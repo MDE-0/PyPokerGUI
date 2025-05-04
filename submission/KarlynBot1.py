@@ -3,6 +3,10 @@ import random
 from pypokerengine.players import BasePokerPlayer
 from pypokerengine.utils.card_utils import gen_cards, estimate_hole_card_win_rate
 
+
+
+def setup_ai():
+    return KarlynBot1()
 class KarlynBot1(BasePokerPlayer):  # Do not forget to make parent class as "BasePokerPlayer"
 
     #  we define the logic to make an action through this method. (so this method would be the core of your AI)
@@ -37,52 +41,6 @@ class KarlynBot1(BasePokerPlayer):  # Do not forget to make parent class as "Bas
 
     def receive_round_result_message(self, winners, hand_info, round_state):
         pass
-
-class KarlynBot2(BasePokerPlayer):
-
-    def declare_action(self, valid_actions, hole_card, round_state):
-        community_card = round_state['community_card']
-        nb_simulation = 100  # Monte Carlo simulations
-
-        win_rate = estimate_hole_card_win_rate(
-            nb_simulation, 2,
-            gen_cards(hole_card),
-            gen_cards(community_card)
-        )
-
-        # Extract available actions
-        fold_action = [a for a in valid_actions if a["action"] == "fold"][0]
-        call_action = [a for a in valid_actions if a["action"] == "call"][0]
-        raise_action = [a for a in valid_actions if a["action"] == "raise"][0]
-
-        # Decision logic based on win rate
-        if win_rate >= 0.7:
-            action = raise_action["action"]
-            amount = raise_action["amount"]["max"]
-        elif win_rate >= 0.3:
-            action = call_action["action"]
-            amount = call_action["amount"]
-        else:
-            action = fold_action["action"]
-            amount = fold_action["amount"]
-
-        return action, amount
-
-    def receive_game_start_message(self, game_info):
-        pass
-
-    def receive_round_start_message(self, round_count, hole_card, seats):
-        pass
-
-    def receive_street_start_message(self, street, round_state):
-        pass
-
-    def receive_game_update_message(self, new_action, round_state):
-        pass
-
-    def receive_round_result_message(self, winners, hand_info, round_state):
-        pass
-
 
 # from pypokerengine.api.game import setup_config, start_poker
 
