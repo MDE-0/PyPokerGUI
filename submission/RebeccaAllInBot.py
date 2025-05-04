@@ -3,7 +3,7 @@ from pypokerengine.players import BasePokerPlayer
 def setup_ai():
     return AllInBot()
 
-class AllInBot(BasePokerPlayer):
+class RebeccaAllInBot(BasePokerPlayer):
     def __init__(self):
         super().__init__()
 
